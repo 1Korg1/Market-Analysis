@@ -1,0 +1,20 @@
+-- Liquidity Data Tracking Database Schema
+
+CREATE TABLE Companies (
+    company_id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    market_cap DECIMAL(20,2)
+);
+
+CREATE TABLE LiquidityMetrics (
+    metric_id SERIAL PRIMARY KEY,
+    company_id INT REFERENCES Companies(company_id),
+    current_assets DECIMAL(20,2),
+    current_liabilities DECIMAL(20,2),
+    inventory DECIMAL(20,2),
+    cash DECIMAL(20,2),
+    trading_volume DECIMAL(20,2),
+    bid_price DECIMAL(10,2),
+    ask_price DECIMAL(10,2),
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
