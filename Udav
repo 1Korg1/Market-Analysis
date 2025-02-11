@@ -1,0 +1,19 @@
+import pandas as pd
+
+# Sample stock market data
+data = {
+    "Stock": ["AAPL", "TSLA", "MSFT"],
+    "Bid Price": [149.8, 702.5, 280.3],
+    "Ask Price": [150.2, 703.0, 280.8],
+    "Trading Volume": [30000000, 25000000, 22000000],
+    "Market Cap": [2500000000000, 900000000000, 2200000000000]
+}
+
+df = pd.DataFrame(data)
+
+# Calculate Bid-Ask Spread and Turnover Ratio
+df["Bid-Ask Spread"] = df["Ask Price"] - df["Bid Price"]
+df["Turnover Ratio"] = df["Trading Volume"] / df["Market Cap"]
+
+# Display results
+print(df[["Stock", "Bid-Ask Spread", "Turnover Ratio"]])
